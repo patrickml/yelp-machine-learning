@@ -1,0 +1,18 @@
+containers:
+    utumongo:
+      image: mongo
+      run:
+          volume: ["${pwd}/data/db:/data/db"]
+          publish: ["27017:27017"]
+          detach: true
+    tokenizer:
+      image: python:3.6.1-alpine
+      run:
+        volume: ["${pwd}tokenizer:/tokenizer"]
+        workdir: "/tokenizer"
+        cmd: ["./run.sh"]
+    process:
+        image: golang:1.8
+        run:
+            volume: ["${pwd}/process:/go/src/github.com/patrickml/yelp-machine-learning/process"]
+            cmd: ["go", "run", "/go/src/github.com/patrickml/yelp-machine-learning/process/main.go"]
