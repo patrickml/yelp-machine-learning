@@ -1,2 +1,3 @@
 .DS_STORE
 data/raw/yelp-reviews.json
+data/db/
