@@ -1,14 +1,14 @@
 containers:
-    utumongo:
+    mongo:
       image: mongo
       run:
-          volume: ["${pwd}/data/db:/data/db"]
+          volume: ["${pwd}data/db:/data/db"]
           publish: ["27017:27017"]
           detach: true
     tokenizer:
       image: python:3.6.1-alpine
       run:
-        volume: ["${pwd}tokenizer:/tokenizer"]
+        volume: ["${pwd}tokenizer:/tokenizer", "${pwd}data/raw:/yelp-data"]
         workdir: "/tokenizer"
         cmd: ["./run.sh"]
     process:
