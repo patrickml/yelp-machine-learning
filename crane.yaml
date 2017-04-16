@@ -8,6 +8,7 @@ containers:
     tokenizer:
       image: python:3.6.1-alpine
       run:
+        interactive: true
         volume: ["${pwd}tokenizer:/tokenizer", "${pwd}data/raw:/yelp-data"]
         workdir: "/tokenizer"
         cmd: ["./run.sh"]
