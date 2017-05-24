@@ -68,12 +68,13 @@ def summarizeTokenUsage(docs):
     for doc in docs:
         # grab the tokens
         for token in doc["tokens"]:
+            t = token.lower()
             # if the token exists already we will increment it by one
-            if token in tokens:
-              tokens[token] = tokens[token] + 1
+            if t in tokens:
+              tokens[t] = tokens[t] + 1
             # else we will create it in our token dict and set it to 1
             else:
-               tokens[token] = 1
+               tokens[t] = 1
 
     return sortSummarized(tokens)
 
