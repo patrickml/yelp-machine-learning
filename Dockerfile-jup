@@ -1,0 +1,4 @@
+FROM jupyter/datascience-notebook
+
+RUN pip2 install pip --upgrade
+RUN pip2 install nltk matplotlib NumPy SciPy np scikit-learn

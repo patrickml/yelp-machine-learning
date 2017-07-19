@@ -1,0 +1,18 @@
+version: '2'
+services:
+  # tokenizer:
+  #   build: .
+  #   volumes:
+  #    - ./tokenizer:/tokenizer
+  #    - ./data/raw:/yelp-data
+  #   stdin_open: true
+  #   tty: true
+  tokenizerjup:
+    build:
+      context: .
+      dockerfile: Dockerfile-jup
+    ports:
+      - "8888:8888"
+    volumes:
+     - ./data/raw:/yelp-data
+     - .:/home/jovyan/work

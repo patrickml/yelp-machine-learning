@@ -1,19 +1,11 @@
 containers:
-    mongo:
-      image: mongo
-      run:
-          volume: ["${pwd}data/db:/data/db"]
-          publish: ["27017:27017"]
-          detach: true
     tokenizer:
-      image: python:3.6.1-alpine
+      image: ml-python
+      build:
+        file: "Dockerfile"
+        context: "."
       run:
         interactive: true
         volume: ["${pwd}tokenizer:/tokenizer", "${pwd}data/raw:/yelp-data"]
         workdir: "/tokenizer"
         cmd: ["./run.sh"]
-    process:
-        image: golang:1.8
-        run:
-            volume: ["${pwd}/process:/go/src/github.com/patrickml/yelp-machine-learning/process"]
-            cmd: ["go", "run", "/go/src/github.com/patrickml/yelp-machine-learning/process/main.go"]
